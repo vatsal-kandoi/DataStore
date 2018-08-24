@@ -1,0 +1,31 @@
+version: '3.2'
+services:
+  backend1:
+    build: ./backend
+    tty: true
+    volumes:
+        - './backend/src:/backend'
+  
+  backend2:
+    build: ./backend
+    tty: true
+    volumes:
+        - './backend/src:/backend'
+  
+  backend3:
+    build: ./backend
+    tty: true
+    volumes:
+        - './backend/src:/backend'
+
+  loadbalancer:
+    build: ./Load-Balancer
+    tty: true
+    links:
+      - backend1
+      - backend2
+      - backend3
+    ports:
+      - '8080:8080'
+volumes:
+  backend:

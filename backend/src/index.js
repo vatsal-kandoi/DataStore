@@ -1,6 +1,6 @@
 const express=require('express');
 const bodyParser=require('body-parser')
-const cookieParser=require('cookieparser')
+const cookieParser=require('cookie-parser')
 const pg=require('pg');
 const helmet=require('helmet');
 
@@ -14,4 +14,6 @@ app.get('/',function(req,res){
     res.send('Welcome to CopyCat');
 });
 
-app.listen(3000);
+app.listen(3000,function(){
+    console.log('Running');
+});
